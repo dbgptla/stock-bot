@@ -10,7 +10,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 
 # 連接 Google Sheets
 client = gspread.authorize(creds)
-sheet = client.open_by_url("你的試算表連結").sheet1
+sheet = client.open_by_url("https://docs.google.com/spreadsheets/d/12Ji57VmiiRQ_77axFXM57Q9ekqho9Y-Uv7iFoJiNAv0/edit?usp=sharing").sheet1
 
 # 假設這裡要抓股票代碼
 stocks = sheet.get_all_records()  # 讀取所有資料
