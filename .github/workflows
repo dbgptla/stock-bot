@@ -1,0 +1,32 @@
+name: Deploy Python Script
+
+# 這裡指定觸發條件，可以根據需求更改
+on:
+  push:
+    branches:
+      - main  # 每次推送到 main 分支時觸發此工作流
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # 使用 Ubuntu 操作系統
+
+    steps:
+    # 1. 檢出代碼
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # 2. 設置 Python 環境
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # 設定 Python 版本
+
+    # 3. 安裝依賴
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt  # 安裝 requirements.txt 中的依賴
+
+    # 4. 運行 Python 腳本
+    - name: Run script
+      run: |
+        python main.py  # 運行你的 Python 腳本
